@@ -1,12 +1,75 @@
 import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { RouterLink, RouterLinkActive } from '@angular/router';
 
 @Component({
   selector: 'app-header',
-  imports: [RouterLink],
-  templateUrl: './header.html',
-  styleUrl: './header.css',
-})
-export class Header {
+  standalone: true,
+  imports: [RouterLink, RouterLinkActive],
+  template: `
+    <header class="app-header">
+      <div class="header-container">
+        <div class="logo">
+          <span>Meu Projeto</span>
+        </div>
 
+        <nav class="nav">
+          <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Início</a>
+          <a routerLink="/uc00604" routerLinkActive="active">UC00604</a>
+          <a routerLink="/sobre" routerLinkActive="active">Sobre</a>
+        </nav>
+
+        <button class="menu-btn" (click)="toggleMenu()">
+          <span class="burger">≡</span>
+        </button>
+      </div>
+
+      <div class="mobile-menu" [class.open]="menuOpen">
+        <a routerLink="/" (click)="closeMenu()">Início</a>
+        <a routerLink="/uc00604" (click)="closeMenu()">UC00604</a>
+        <a routerLink="/sobre" (click)="closeMenu()">Sobre</a>
+      </div>
+    </header>
+  `,
+  styles: [`
+    .app-header {
+      width: 100%;
+      background: var(--background-color-header);
+      color: var(--text-color-light);
+      padding: 0.7rem 1.5rem;
+      box-shadow: var(--shadow);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .header-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo span { font-size: 1.4rem; font-weight: bold; }
+
+    .nav { display: flex; gap: 1.5rem; }
+    .nav a { text-decoration: none; color: var(--text-color-light); font-weight: 500; transition: var(--transition); }
+    .nav a:hover, .nav a.active { color: var(--primary-color); }
+
+    .menu-btn { display: none; font-size: 1.8rem; background: none; border: none; color: var(--text-color-light); cursor: pointer; }
+
+    .mobile-menu { display: none; flex-direction: column; background: var(--secondary-doc-color); padding: 1rem; animation: var(--animation-move-gradient); }
+    .mobile-menu a { padding: 0.7rem 0; color: var(--text-color-light); text-decoration: none; transition: var(--transition); }
+    .mobile-menu a:hover { color: var(--primary-color); }
+    .mobile-menu.open { display: flex; }
+
+    @media (max-width: 768px) {
+      .nav { display: none; }
+      .menu-btn { display: block; }
+    }
+  `]
+})
+export class HeaderComponent {
+  menuOpen = false;
+  toggleMenu() { this.menuOpen = !this.menuOpen; }
+  closeMenu() { this.menuOpen = false; }
 }
+

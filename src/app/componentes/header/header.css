@@ -1,73 +1,26 @@
-/* Reset e estilos base */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-}
-
-.body {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-
-  color: #333;
-  line-height: 1.6;
-}
-
-app-header {
+.app-header {
   width: 100%;
-  min-height: max-content;
+  background: var(--background-color-header);
+  color: var(--text-color-light);
+  padding: 0.7rem 1.5rem;
+  box-shadow: var(--shadow);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
-/* Conteúdo principal */
-app-main {
-  flex: 1;
-  min-height: 75vh;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  align-content: center;
-  background-color: var(--background-color);
-}
+.header-container { display: flex; align-items: center; justify-content: space-between; }
+.logo span { font-size: 1.4rem; font-weight: bold; }
+.nav { display: flex; gap: 1.5rem; }
+.nav a { text-decoration: none; color: var(--text-color-light); font-weight: 500; transition: var(--transition); }
+.nav a:hover, .nav a.active { color: var(--primary-color); }
+.menu-btn { display: none; font-size: 1.8rem; background: none; border: none; color: var(--text-color-light); cursor: pointer; }
+.mobile-menu { display: none; flex-direction: column; background: var(--secondary-doc-color); padding: 1rem; animation: var(--animation-move-gradient); }
+.mobile-menu a { padding: 0.7rem 0; color: var(--text-color-light); text-decoration: none; transition: var(--transition); }
+.mobile-menu a:hover { color: var(--primary-color); }
+.mobile-menu.open { display: flex; }
 
-/* Rodapé */
-app-footer {
-  width: 100%;
-  min-height: max-content;
-}
-
-/* Media Queries para responsividade */
-
-/* Tablets e telas menores */
 @media (max-width: 768px) {
-  main {
-    justify-content: center;
-    padding: 0.5rem;
-    min-height: 60vh; /* Ajuste para dar mais espaço ao conteúdo */
-  }
-}
-
-/* Dispositivos móveis */
-@media (max-width: 480px) {
-  body {
-
-    line-height: 1.5; /* Ajuste fino para melhor legibilidade */
-  }
-
-  main {
-    flex-direction: column;
-    align-items: stretch;
-    justify-content: flex-start;
-    min-height: 60vh;
-    padding: 0.5rem;
-  }
-}
-
-/* Telas muito pequenas (opcional) */
-@media (max-width: 320px) {
-  main {
-    padding: 0.25rem;
-  }
+  .nav { display: none; }
+  .menu-btn { display: block; }
 }
