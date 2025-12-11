@@ -1,20 +1,20 @@
-<header class="app-header">
-  <div class="header-container">
-    <div class="logo"><span>Meu Projeto</span></div>
+<header class="header">
+  <div class="local-header">
+    <div class="local-header-content">
+      <h1>Welcome to UC00604</h1>
+      <p>Be ready to be more than just a student!</p>
+    </div>
 
-    <nav class="nav">
-      <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Início</a>
-      <a routerLink="/sobre" routerLinkActive="active">Sobre</a>
-    </nav>
-
-    <button class="menu-btn" (click)="toggleMenu()">
-      <span class="burger">≡</span>
-    </button>
   </div>
+  <div class="nav-content">
+    <!-- Link à esquerda -->
+    <a routerLink="/class/Welcome" class="logo-link">Welcome</a>
+    <a routerLink="/class/project" class="logo-link">Class Project</a>
 
-  <div class="mobile-menu" [class.open]="menuOpen">
-    <a routerLink="/" (click)="closeMenu()">Início</a>
-    <a routerLink="/sobre" (click)="closeMenu()">Sobre</a>
+
+    <!-- Espaço para outros elementos à direita se necessário -->
+    <div class="spacer"></div>
   </div>
+  <!-- </nav> -->
 </header>
 
