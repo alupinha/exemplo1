@@ -1,13 +1,4 @@
-import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-import { HeaderComponent } from './componentes/header/header';
+import { RouterLink } from "@angular/router";
 
-
-@Component({
-  selector: 'app-root',
-  standalone: true,
-  imports: [],
-
-})
-export class AppComponent {}
+imports: [RouterLink]
 
