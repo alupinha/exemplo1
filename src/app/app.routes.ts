@@ -6,7 +6,7 @@ export const routes: Routes = [
   {path:"welcome", loadComponent: () => import ('./pages/welcome/welcome').then(c => c.Welcome) },
 
 
-  /**Rota padrão sem laseyload */
+  /**Rota padrão sem lasyload */
   {path:"pages/exemplo1", component: Exemplo1},
   {path:"pages/autenticacao", loadComponent: () => import('./pages/authentication/authentication').then(c => c.Authentication)},
 
